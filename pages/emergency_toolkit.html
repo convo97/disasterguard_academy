@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Emergency Toolkit - DisasterGuard Academy</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fdisastergu5854back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.8"></script>
+</head>
+<body class="bg-gradient-to-br from-blue-50 via-emerald-50 to-slate-50 min-h-screen">
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 opacity-5">
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <pattern id="emergency-pattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+                    <circle cx="50" cy="50" r="2" fill="#DC2626"/>
+                    <circle cx="25" cy="25" r="1" fill="#2563EB"/>
+                    <circle cx="75" cy="75" r="1.5" fill="#059669"/>
+                </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#emergency-pattern)"/>
+        </svg>
+    </div>
+
+    <!-- Header -->
+    <header class="relative z-10 bg-white/80 backdrop-blur-sm border-b border-slate-200">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
+                        <i class="fas fa-shield-alt text-white text-lg"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-heading font-bold text-slate-800">DisasterGuard Academy</h1>
+                        <p class="text-xs text-slate-500">Emergency Toolkit</p>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <nav class="hidden md:flex items-center space-x-6">
+                    <a href="student_dashboard.html" class="text-slate-600 hover:text-primary transition-colors duration-200">
+                        <i class="fas fa-home mr-2"></i>Dashboard
+                    </a>
+                    <a href="interactive_disaster_module.html" class="text-slate-600 hover:text-primary transition-colors duration-200">
+                        <i class="fas fa-graduation-cap mr-2"></i>Learn
+                    </a>
+                    <a href="quiz_interface.html" class="text-slate-600 hover:text-primary transition-colors duration-200">
+                        <i class="fas fa-question-circle mr-2"></i>Quiz
+                    </a>
+                    <a href="emergency_toolkit.html" class="text-primary font-medium">
+                        <i class="fas fa-first-aid mr-2"></i>Emergency
+                    </a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="md:hidden p-2 text-slate-600 hover:text-primary">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-slate-200">
+            <div class="container mx-auto px-4 py-4 space-y-2">
+                <a href="student_dashboard.html" class="block py-2 text-slate-600 hover:text-primary transition-colors duration-200">
+                    <i class="fas fa-home mr-2"></i>Dashboard
+                </a>
+                <a href="interactive_disaster_module.html" class="block py-2 text-slate-600 hover:text-primary transition-colors duration-200">
+                    <i class="fas fa-graduation-cap mr-2"></i>Learn
+                </a>
+                <a href="quiz_interface.html" class="block py-2 text-slate-600 hover:text-primary transition-colors duration-200">
+                    <i class="fas fa-question-circle mr-2"></i>Quiz
+                </a>
+                <a href="emergency_toolkit.html" class="block py-2 text-primary font-medium">
+                    <i class="fas fa-first-aid mr-2"></i>Emergency
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="relative z-10 container mx-auto px-4 py-8">
+        <!-- Emergency Alert Banner -->
+        <div id="emergencyAlert" class="mb-6 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-lg p-4 shadow-lg animate-pulse">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
+                        <i class="fas fa-exclamation-triangle text-white"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold">Weather Alert</h3>
+                        <p class="text-sm text-red-100">Heavy rainfall expected in your area. Stay indoors and avoid waterlogged areas.</p>
+                    </div>
+                </div>
+                <button class="text-white/80 hover:text-white">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Page Header -->
+        <div class="text-center mb-8">
+            <div class="w-16 h-16 bg-gradient-to-br from-red-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-first-aid text-white text-2xl"></i>
+            </div>
+            <h1 class="text-3xl font-heading font-bold text-slate-800 mb-2">Emergency Toolkit</h1>
+            <p class="text-slate-600 max-w-2xl mx-auto">Quick access to emergency contacts, safety guides, and disaster response resources</p>
+        </div>
+
+        <!-- Emergency Contacts Section -->
+        <section class="mb-8">
+            <div class="bg-white rounded-2xl shadow-elevation-3 border border-slate-200 overflow-hidden">
+                <div class="bg-gradient-to-r from-red-500 to-red-600 p-6">
+                    <h2 class="text-xl font-heading font-bold text-white flex items-center">
+                        <i class="fas fa-phone-alt mr-3"></i>Emergency Contacts
+                    </h2>
+                    <p class="text-red-100 text-sm mt-1">Tap to call immediately</p>
+                </div>
+                
+                <div class="p-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- Fire Emergency -->
+                        <a href="tel:101" class="emergency-contact-btn bg-red-50 hover:bg-red-100 border-2 border-red-200 rounded-xl p-4 transition-all duration-200 hover:shadow-lg group">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
+                                    <i class="fas fa-fire text-white text-xl"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="font-semibold text-red-800">Fire Emergency</h3>
+                                    <p class="text-red-600 text-sm">Fire Department</p>
+                                    <p class="text-2xl font-bold text-red-700">101</p>
+                                </div>
+                                <i class="fas fa-phone text-red-500 text-xl group-hover:animate-bounce"></i>
+                            </div>
+                        </a>
+
+                        <!-- Police Emergency -->
+                        <a href="tel:100" class="emergency-contact-btn bg-blue-50 hover:bg-blue-100 border-2 border-blue-200 rounded-xl p-4 transition-all duration-200 hover:shadow-lg group">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
+                                    <i class="fas fa-shield-alt text-white text-xl"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="font-semibold text-blue-800">Police Emergency</h3>
+                                    <p class="text-blue-600 text-sm">Police Department</p>
+                                    <p class="text-2xl font-bold text-blue-700">100</p>
+                                </div>
+                                <i class="fas fa-phone text-blue-500 text-xl group-hover:animate-bounce"></i>
+                            </div>
+                        </a>
+
+                        <!-- Medical Emergency -->
+                        <a href="tel:108" class="emergency-contact-btn bg-green-50 hover:bg-green-100 border-2 border-green-200 rounded-xl p-4 transition-all duration-200 hover:shadow-lg group">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
+                                    <i class="fas fa-ambulance text-white text-xl"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="font-semibold text-green-800">Medical Emergency</h3>
+                                    <p class="text-green-600 text-sm">Ambulance Service</p>
+                                    <p class="text-2xl font-bold text-green-700">108</p>
+                                </div>
+                                <i class="fas fa-phone text-green-500 text-xl group-hover:animate-bounce"></i>
+                            </div>
+                        </a>
+
+                        <!-- NDMA Emergency -->
+                        <a href="tel:1078" class="emergency-contact-btn bg-orange-50 hover:bg-orange-100 border-2 border-orange-200 rounded-xl p-4 transition-all duration-200 hover:shadow-lg group">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
+                                    <i class="fas fa-exclamation-triangle text-white text-xl"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="font-semibold text-orange-800">Disaster Management</h3>
+                                    <p class="text-orange-600 text-sm">NDMA Helpline</p>
+                                    <p class="text-2xl font-bold text-orange-700">1078</p>
+                                </div>
+                                <i class="fas fa-phone text-orange-500 text-xl group-hover:animate-bounce"></i>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Action Grid -->
+        <section class="mb-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Emergency Kit Checklist -->
+                <div class="bg-white rounded-xl shadow-elevation-2 border border-slate-200 p-6 hover:shadow-elevation-3 transition-all duration-200">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-list-check text-blue-600 text-xl"></i>
+                        </div>
+                        <span class="text-sm text-slate-500">75% Complete</span>
+                    </div>
+                    <h3 class="text-lg font-semibold text-slate-800 mb-2">Emergency Kit</h3>
+                    <p class="text-slate-600 text-sm mb-4">Essential supplies checklist for your family</p>
+                    <button class="w-full bg-blue-50 text-blue-600 py-2 rounded-lg font-medium hover:bg-blue-100 transition-colors duration-200">
+                        View Checklist
+                    </button>
+                </div>
+
+                <!-- Family Emergency Plan -->
+                <div class="bg-white rounded-xl shadow-elevation-2 border border-slate-200 p-6 hover:shadow-elevation-3 transition-all duration-200">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-users text-green-600 text-xl"></i>
+                        </div>
+                        <span class="text-sm text-green-600 font-medium">Updated</span>
+                    </div>
+                    <h3 class="text-lg font-semibold text-slate-800 mb-2">Family Plan</h3>
+                    <p class="text-slate-600 text-sm mb-4">Emergency contacts and meeting points</p>
+                    <button class="w-full bg-green-50 text-green-600 py-2 rounded-lg font-medium hover:bg-green-100 transition-colors duration-200">
+                        Edit Plan
+                    </button>
+                </div>
+
+                <!-- Safety Guides -->
+                <div class="bg-white rounded-xl shadow-elevation-2 border border-slate-200 p-6 hover:shadow-elevation-3 transition-all duration-200">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-book-open text-purple-600 text-xl"></i>
+                        </div>
+                        <span class="text-sm text-slate-500">8 Guides</span>
+                    </div>
+                    <h3 class="text-lg font-semibold text-slate-800 mb-2">Safety Guides</h3>
+                    <p class="text-slate-600 text-sm mb-4">Step-by-step emergency procedures</p>
+                    <button class="w-full bg-purple-50 text-purple-600 py-2 rounded-lg font-medium hover:bg-purple-100 transition-colors duration-200">
+                        Browse Guides
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Weather & Alerts -->
+        <section class="mb-8">
+            <div class="bg-white rounded-2xl shadow-elevation-3 border border-slate-200 overflow-hidden">
+                <div class="bg-gradient-to-r from-blue-500 to-blue-600 p-6">
+                    <h2 class="text-xl font-heading font-bold text-white flex items-center">
+                        <i class="fas fa-cloud-sun mr-3"></i>Weather & Alerts
+                    </h2>
+                    <p class="text-blue-100 text-sm mt-1">Real-time weather and disaster alerts</p>
+                </div>
+                
+                <div class="p-6">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <!-- Current Weather -->
+                        <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-4">
+                            <div class="flex items-center justify-between mb-4">
+                                <div>
+                                    <h3 class="text-lg font-semibold text-blue-800">Current Weather</h3>
+                                    <p class="text-blue-600 text-sm">Mumbai, Maharashtra</p>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-3xl font-bold text-blue-800">28°C</div>
+                                    <div class="text-blue-600 text-sm">Partly Cloudy</div>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-3 gap-4 text-center">
+                                <div>
+                                    <i class="fas fa-eye text-blue-600 mb-1"></i>
+                                    <div class="text-xs text-blue-700">Visibility</div>
+                                    <div class="text-sm font-semibold text-blue-800">10 km</div>
+                                </div>
+                                <div>
+                                    <i class="fas fa-tint text-blue-600 mb-1"></i>
+                                    <div class="text-xs text-blue-700">Humidity</div>
+                                    <div class="text-sm font-semibold text-blue-800">65%</div>
+                                </div>
+                                <div>
+                                    <i class="fas fa-wind text-blue-600 mb-1"></i>
+                                    <div class="text-xs text-blue-700">Wind</div>
+                                    <div class="text-sm font-semibold text-blue-800">12 km/h</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Active Alerts -->
+                        <div class="space-y-4">
+                            <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center flex-shrink-0">
+                                        <i class="fas fa-exclamation text-white text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-yellow-800">Heavy Rain Warning</h4>
+                                        <p class="text-yellow-700 text-sm">Expected 50-100mm rainfall in next 6 hours</p>
+                                        <p class="text-yellow-600 text-xs mt-1">Valid until: 6:00 PM today</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
+                                        <i class="fas fa-check text-white text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-green-800">All Clear</h4>
+                                        <p class="text-green-700 text-sm">No active disaster warnings in your area</p>
+                                        <p class="text-green-600 text-xs mt-1">Last updated: 2 hours ago</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Assistant -->
+        <section class="mb-8">
+            <div class="bg-white rounded-2xl shadow-elevation-3 border border-slate-200 overflow-hidden">
+                <div class="bg-gradient-to-r from-purple-500 to-purple-600 p-6">
+                    <h2 class="text-xl font-heading font-bold text-white flex items-center">
+                        <i class="fas fa-robot mr-3"></i>AI Emergency Assistant
+                    </h2>
+                    <p class="text-purple-100 text-sm mt-1">Get instant guidance for emergency situations</p>
+                </div>
+                
+                <div class="p-6">
+                    <div class="bg-slate-50 rounded-lg p-4 mb-4">
+                        <div class="flex items-start space-x-3">
+                            <div class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-robot text-white text-sm"></i>
+                            </div>
+                            <div class="flex-1">
+                                <p class="text-slate-700 text-sm">Hello! I'm your emergency assistant. I can help you with:</p>
+                                <ul class="text-slate-600 text-sm mt-2 space-y-1">
+                                    <li>• Emergency response procedures</li>
+                                    <li>• Safety recommendations</li>
+                                    <li>• Evacuation guidance</li>
+                                    <li>• First aid instructions</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex space-x-2">
+                        <input type="text" placeholder="Ask me about any emergency situation..." class="flex-1 px-4 py-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-purple-200 focus:border-purple-500 transition-all duration-200" />
+                        <button class="bg-purple-500 text-white px-6 py-3 rounded-lg hover:bg-purple-600 transition-colors duration-200">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+
+                    <!-- Quick Questions -->
+                    <div class="mt-4">
+                        <p class="text-sm text-slate-600 mb-2">Quick questions:</p>
+                        <div class="flex flex-wrap gap-2">
+                            <button class="bg-slate-100 text-slate-700 px-3 py-1 rounded-full text-sm hover:bg-slate-200 transition-colors duration-200">
+                                What to do during earthquake?
+                            </button>
+                            <button class="bg-slate-100 text-slate-700 px-3 py-1 rounded-full text-sm hover:bg-slate-200 transition-colors duration-200">
+                                Fire safety steps
+                            </button>
+                            <button class="bg-slate-100 text-slate-700 px-3 py-1 rounded-full text-sm hover:bg-slate-200 transition-colors duration-200">
+                                Flood evacuation
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Emergency Kit Checklist -->
+        <section class="mb-8">
+            <div class="bg-white rounded-2xl shadow-elevation-3 border border-slate-200 overflow-hidden">
+                <div class="bg-gradient-to-r from-green-500 to-green-600 p-6">
+                    <h2 class="text-xl font-heading font-bold text-white flex items-center">
+                        <i class="fas fa-box mr-3"></i>Emergency Kit Checklist
+                    </h2>
+                    <p class="text-green-100 text-sm mt-1">Essential supplies for your family (4 members)</p>
+                </div>
+                
+                <div class="p-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Water & Food -->
+                        <div>
+                            <h3 class="font-semibold text-slate-800 mb-3 flex items-center">
+                                <i class="fas fa-utensils text-blue-500 mr-2"></i>Water & Food
+                            </h3>
+                            <div class="space-y-2">
+                                <label class="flex items-center space-x-3">
+                                    <input type="checkbox" checked class="w-4 h-4 text-green-500 border-slate-300 rounded focus:ring-green-200" />
+                                    <span class="text-slate-700 text-sm">Water (1 gallon per person per day for 3 days)</span>
+                                </label>
+                                <label class="flex items-center space-x-3">
+                                    <input type="checkbox" checked class="w-4 h-4 text-green-500 border-slate-300 rounded focus:ring-green-200" />
+                                    <span class="text-slate-700 text-sm">Non-perishable food (3-day supply)</span>
+                                </label>
+                                <label class="flex items-center space-x-3">
+                                    <input type="checkbox" class="w-4 h-4 text-green-500 border-slate-300 rounded focus:ring-green-200" />
+                                    <span class="text-slate-700 text-sm">Can opener (manual)</span>
+                                </label>
+                                <label class="flex items-center space-x-3">
+                                    <input type="checkbox" checked class="w-4 h-4 text-green-500 border-slate-300 rounded focus:ring-green-200" />
+                                    <span class="text-slate-700 text-sm">Baby food/formula (if needed)</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- First Aid & Medicine -->
+                        <div>
+                            <h3 class="font-semibold text-slate-800 mb-3 flex items-center">
+                                <i class="fas fa-first-aid text-red-500 mr-2"></i>First Aid & Medicine
+                            </h3>
+                            <div class="space-y-2">
+                                <label class="flex items-center space-x-3">
+                                    <input type="checkbox" checked class="w-4 h-4 text-green-500 border-slate-300 rounded focus:ring-green-200" />
+                                    <span class="text-slate-700 text-sm">First aid kit</span>
+                                </label>
+                                <label class="flex items-center space-x-3">
+                                    <input type="checkbox" class="w-4 h-4 text-green-500 border-slate-300 rounded focus:ring-green-200" />
+                                    <span class="text-slate-700 text-sm">Prescription medications</span>
+                                </label>
+                                <label class="flex items-center space-x-3">
+                                    <input type="checkbox" checked class="w-4 h-4 text-green-500 border-slate-300 rounded focus:ring-green-200" />
+                                    <span class="text-slate-700 text-sm">Pain relievers</span>
+                                </label>
+                                <label class="flex items-center space-x-3">
+                                    <input type="checkbox" class="w-4 h-4 text-green-500 border-slate-300 rounded focus:ring-green-200" />
+                                    <span class="text-slate-700 text-sm">Thermometer</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Tools & Supplies -->
+                        <div>
+                            <h3 class="font-semibold text-slate-800 mb-3 flex items-center">
+                                <i class="fas fa-tools text-orange-500 mr-2"></i>Tools & Supplies
+                            </h3>
+                            <div class="space-y-2">
+                                <label class="flex items-center space-x-3">
+                                    <input type="checkbox" checked class="w-4 h-4 text-green-500 border-slate-300 rounded focus:ring-green-200" />
+                                    <span class="text-slate-700 text-sm">Flashlight</span>
+                                </label>
+                                <label class="flex items-center space-x-3">
+                                    <input type="checkbox" checked class="w-4 h-4 text-green-500 border-slate-300 rounded focus:ring-green-200" />
+                                    <span class="text-slate-700 text-sm">Battery-powered radio</span>
+                                </label>
+                                <label class="flex items-center space-x-3">
+                                    <input type="checkbox" class="w-4 h-4 text-green-500 border-slate-300 rounded focus:ring-green-200" />
+                                    <span class="text-slate-700 text-sm">Extra batteries</span>
+                                </label>
+                                <label class="flex items-center space-x-3">
+                                    <input type="checkbox" class="w-4 h-4 text-green-500 border-slate-300 rounded focus:ring-green-200" />
+                                    <span class="text-slate-700 text-sm">Whistle (for signaling help)</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Personal Items -->
+                        <div>
+                            <h3 class="font-semibold text-slate-800 mb-3 flex items-center">
+                                <i class="fas fa-user text-purple-500 mr-2"></i>Personal Items
+                            </h3>
+                            <div class="space-y-2">
+                                <label class="flex items-center space-x-3">
+                                    <input type="checkbox" checked class="w-4 h-4 text-green-500 border-slate-300 rounded focus:ring-green-200" />
+                                    <span class="text-slate-700 text-sm">Important documents (copies)</span>
+                                </label>
+                                <label class="flex items-center space-x-3">
+                                    <input type="checkbox" class="w-4 h-4 text-green-500 border-slate-300 rounded focus:ring-green-200" />
+                                    <span class="text-slate-700 text-sm">Cash and credit cards</span>
+                                </label>
+                                <label class="flex items-center space-x-3">
+                                    <input type="checkbox" checked class="w-4 h-4 text-green-500 border-slate-300 rounded focus:ring-green-200" />
+                                    <span class="text-slate-700 text-sm">Emergency contact information</span>
+                                </label>
+                                <label class="flex items-center space-x-3">
+                                    <input type="checkbox" class="w-4 h-4 text-green-500 border-slate-300 rounded focus:ring-green-200" />
+                                    <span class="text-slate-700 text-sm">Change of clothing</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Progress Bar -->
+                    <div class="mt-6 pt-6 border-t border-slate-200">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-sm font-medium text-slate-700">Kit Completion</span>
+                            <span class="text-sm text-slate-600">12/16 items (75%)</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 75%"></div>
+                        </div>
+                        <div class="flex space-x-3 mt-4">
+                            <button class="flex-1 bg-green-50 text-green-600 py-2 rounded-lg font-medium hover:bg-green-100 transition-colors duration-200">
+                                <i class="fas fa-shopping-cart mr-2"></i>Generate Shopping List
+                            </button>
+                            <button class="flex-1 bg-blue-50 text-blue-600 py-2 rounded-lg font-medium hover:bg-blue-100 transition-colors duration-200">
+                                <i class="fas fa-print mr-2"></i>Print Checklist
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Floating Emergency Button -->
+    <div class="floating-action">
+        <i class="fas fa-phone-alt text-xl"></i>
+    </div>
+
+    <!-- Footer -->
+    <footer class="relative z-10 bg-white/80 backdrop-blur-sm border-t border-slate-200 mt-12">
+        <div class="container mx-auto px-4 py-6">
+            <div class="text-center">
+                <p class="text-slate-600 text-sm">
+                    © 2025 DisasterGuard Academy. All Rights Reserved. | Emergency Toolkit
+                </p>
+                <p class="text-slate-500 text-xs mt-1">
+                    Last updated: September 8, 2025 | Stay prepared, stay safe
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Emergency alert close
+        document.querySelector('#emergencyAlert button').addEventListener('click', function() {
+            document.getElementById('emergencyAlert').style.display = 'none';
+        });
+
+        // Floating emergency button
+        document.querySelector('.floating-action').addEventListener('click', function() {
+            // Show emergency contacts modal or scroll to emergency contacts
+            document.querySelector('section').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Checklist functionality
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                updateProgress();
+            });
+        });
+
+        function updateProgress() {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            const checked = document.querySelectorAll('input[type="checkbox"]:checked');
+            const percentage = Math.round((checked.length / checkboxes.length) * 100);
+            
+            // Update progress bar
+            document.querySelector('.progress-fill').style.width = percentage + '%';
+            document.querySelector('.progress-bar').parentNode.querySelector('span:last-child').textContent = 
+                `${checked.length}/${checkboxes.length} items (${percentage}%)`;
+        }
+
+        // AI Assistant functionality
+        document.querySelector('input[type="text"]').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        document.querySelector('button[class*="bg-purple-500"]').addEventListener('click', sendMessage);
+
+        function sendMessage() {
+            const input = document.querySelector('input[type="text"]');
+            const message = input.value.trim();
+            if (message) {
+                // Simulate AI response
+                console.log('AI Assistant query:', message);
+                input.value = '';
+                // In a real app, this would send to AI service
+            }
+        }
+
+        // Quick question buttons
+        document.querySelectorAll('button[class*="bg-slate-100"]').forEach(button => {
+            button.addEventListener('click', function() {
+                document.querySelector('input[type="text"]').value = this.textContent;
+                sendMessage();
+            });
+        });
+
+        // Initialize progress
+        updateProgress();
+
+        // Simulate real-time weather updates
+        setInterval(function() {
+            const temp = Math.floor(Math.random() * 5) + 26; // 26-30°C
+            document.querySelector('.text-3xl.font-bold.text-blue-800').textContent = temp + '°C';
+        }, 30000); // Update every 30 seconds
+
+        // Emergency contact tracking
+        document.querySelectorAll('.emergency-contact-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                // Track emergency contact usage
+                const contactType = this.querySelector('h3').textContent;
+                console.log('Emergency contact used:', contactType);
+                
+                // Show confirmation (in real app, this would actually make the call)
+                if (confirm(`Call ${contactType}?`)) {
+                    // Proceed with call
+                    console.log('Calling emergency service...');
+                } else {
+                    e.preventDefault();
+                }
+            });
+        });
+    </script>
+<script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+</body>
+</html>

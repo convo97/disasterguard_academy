@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz Interface - DisasterGuard Academy</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fdisastergu5854back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.8"></script>
+</head>
+<body class="bg-gradient-to-br from-blue-50 via-emerald-50 to-slate-50 min-h-screen">
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 opacity-5">
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <pattern id="disaster-pattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+                    <circle cx="50" cy="50" r="2" fill="#2563EB"/>
+                    <circle cx="25" cy="25" r="1" fill="#059669"/>
+                    <circle cx="75" cy="75" r="1.5" fill="#DC2626"/>
+                </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#disaster-pattern)"/>
+        </svg>
+    </div>
+
+    <!-- Header -->
+    <header class="relative z-10 bg-white/80 backdrop-blur-sm border-b border-slate-200">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
+                        <i class="fas fa-shield-alt text-white text-lg"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-heading font-bold text-slate-800">DisasterGuard Academy</h1>
+                        <p class="text-xs text-slate-500">Disaster Preparedness Education</p>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <nav class="hidden md:flex items-center space-x-6">
+                    <a href="student_dashboard.html" class="text-slate-600 hover:text-primary transition-colors duration-200">
+                        <i class="fas fa-home mr-2"></i>Dashboard
+                    </a>
+                    <a href="interactive_disaster_module.html" class="text-slate-600 hover:text-primary transition-colors duration-200">
+                        <i class="fas fa-book-open mr-2"></i>Modules
+                    </a>
+                    <a href="quiz_interface.html" class="text-primary font-medium">
+                        <i class="fas fa-question-circle mr-2"></i>Quiz
+                    </a>
+                    <a href="emergency_toolkit.html" class="text-slate-600 hover:text-primary transition-colors duration-200">
+                        <i class="fas fa-first-aid mr-2"></i>Emergency Kit
+                    </a>
+                </nav>
+
+                <!-- User Profile & Language -->
+                <div class="flex items-center space-x-4">
+                    <select id="languageSelector" class="bg-white border border-slate-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary-200 focus:border-primary appearance-none cursor-pointer">
+                        <option value="en">English</option>
+                        <option value="hi">हिंदी</option>
+                        <option value="bn">বাংলা</option>
+                        <option value="te">తెలుగు</option>
+                    </select>
+                    <div class="w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center">
+                        <i class="fas fa-user text-white text-sm"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="relative z-10 container mx-auto px-4 py-8">
+        <!-- Quiz Header -->
+        <div class="bg-white rounded-2xl shadow-elevation-3 border border-slate-200 p-6 mb-6">
+            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+                <div>
+                    <h2 class="text-2xl font-heading font-bold text-slate-800 mb-2">Earthquake Safety Quiz</h2>
+                    <p class="text-slate-600">Test your knowledge about earthquake preparedness and safety measures</p>
+                    <div class="flex items-center space-x-4 mt-3">
+                        <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-medium">
+                            <i class="fas fa-layer-group mr-1"></i>Grade 8-10
+                        </span>
+                        <span class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-sm font-medium">
+                            <i class="fas fa-clock mr-1"></i>15 minutes
+                        </span>
+                        <span class="bg-amber-100 text-amber-700 px-3 py-1 rounded-full text-sm font-medium">
+                            <i class="fas fa-star mr-1"></i>10 Questions
+                        </span>
+                    </div>
+                </div>
+                
+                <!-- Quiz Stats -->
+                <div class="flex items-center space-x-6">
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-primary">8</div>
+                        <div class="text-xs text-slate-500">Questions Left</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-secondary">150</div>
+                        <div class="text-xs text-slate-500">Points Earned</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-accent">12:45</div>
+                        <div class="text-xs text-slate-500">Time Left</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="mt-6">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-sm font-medium text-slate-700">Progress</span>
+                    <span class="text-sm text-slate-500">Question 3 of 10</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 30%"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+            <!-- Quiz Content -->
+            <div class="lg:col-span-3">
+                <!-- Current Question -->
+                <div class="bg-white rounded-2xl shadow-elevation-3 border border-slate-200 p-6 mb-6">
+                    <!-- Question Header -->
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center">
+                                <span class="text-white font-bold">3</span>
+                            </div>
+                            <div>
+                                <h3 class="font-heading font-bold text-slate-800">Question 3</h3>
+                                <p class="text-sm text-slate-500">Multiple Choice</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button class="p-2 text-slate-400 hover:text-amber-500 transition-colors duration-200" title="Mark for Review">
+                                <i class="fas fa-bookmark"></i>
+                            </button>
+                            <button class="p-2 text-slate-400 hover:text-blue-500 transition-colors duration-200" title="Help">
+                                <i class="fas fa-question-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Question Image -->
+                    <div class="mb-6">
+                        <div class="relative rounded-xl overflow-hidden bg-slate-100">
+                            <img src="https://images.pexels.com/photos/8728382/pexels-photo-8728382.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Earthquake safety scenario" class="w-full h-48 object-cover" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                        </div>
+                    </div>
+
+                    <!-- Question Text -->
+                    <div class="mb-6">
+                        <h4 class="text-lg font-heading font-bold text-slate-800 mb-3">
+                            During an earthquake, what is the FIRST thing you should do if you are indoors?
+                        </h4>
+                        <p class="text-slate-600 text-sm">
+                            Choose the most appropriate immediate action to take when you feel the ground shaking while inside a building.
+                        </p>
+                    </div>
+
+                    <!-- Answer Options -->
+                    <div class="space-y-3">
+                        <label class="quiz-option flex items-center p-4 border-2 border-slate-200 rounded-xl cursor-pointer transition-all duration-200 hover:border-primary-200 hover:bg-primary-50">
+                            <input type="radio" name="question3" value="A" class="w-5 h-5 text-primary border-slate-300 focus:ring-primary-200" />
+                            <div class="ml-4 flex-1">
+                                <div class="flex items-center">
+                                    <span class="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center text-sm font-bold text-slate-600 mr-3">A</span>
+                                    <span class="font-medium text-slate-800">Run outside immediately</span>
+                                </div>
+                            </div>
+                        </label>
+
+                        <label class="quiz-option flex items-center p-4 border-2 border-slate-200 rounded-xl cursor-pointer transition-all duration-200 hover:border-primary-200 hover:bg-primary-50">
+                            <input type="radio" name="question3" value="B" class="w-5 h-5 text-primary border-slate-300 focus:ring-primary-200" />
+                            <div class="ml-4 flex-1">
+                                <div class="flex items-center">
+                                    <span class="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center text-sm font-bold text-slate-600 mr-3">B</span>
+                                    <span class="font-medium text-slate-800">Drop, Cover, and Hold On</span>
+                                </div>
+                            </div>
+                        </label>
+
+                        <label class="quiz-option flex items-center p-4 border-2 border-slate-200 rounded-xl cursor-pointer transition-all duration-200 hover:border-primary-200 hover:bg-primary-50">
+                            <input type="radio" name="question3" value="C" class="w-5 h-5 text-primary border-slate-300 focus:ring-primary-200" />
+                            <div class="ml-4 flex-1">
+                                <div class="flex items-center">
+                                    <span class="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center text-sm font-bold text-slate-600 mr-3">C</span>
+                                    <span class="font-medium text-slate-800">Stand in a doorway</span>
+                                </div>
+                            </div>
+                        </label>
+
+                        <label class="quiz-option flex items-center p-4 border-2 border-slate-200 rounded-xl cursor-pointer transition-all duration-200 hover:border-primary-200 hover:bg-primary-50">
+                            <input type="radio" name="question3" value="D" class="w-5 h-5 text-primary border-slate-300 focus:ring-primary-200" />
+                            <div class="ml-4 flex-1">
+                                <div class="flex items-center">
+                                    <span class="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center text-sm font-bold text-slate-600 mr-3">D</span>
+                                    <span class="font-medium text-slate-800">Call for help immediately</span>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+
+                    <!-- Navigation Buttons -->
+                    <div class="flex items-center justify-between mt-8 pt-6 border-t border-slate-200">
+                        <button class="flex items-center px-6 py-3 text-slate-600 hover:text-slate-800 transition-colors duration-200">
+                            <i class="fas fa-chevron-left mr-2"></i>Previous
+                        </button>
+                        
+                        <div class="flex items-center space-x-3">
+                            <button class="px-6 py-3 border-2 border-amber-200 text-amber-700 rounded-lg font-medium hover:bg-amber-50 transition-all duration-200">
+                                <i class="fas fa-bookmark mr-2"></i>Mark for Review
+                            </button>
+                            <button class="px-6 py-3 bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-medium hover:shadow-lg transition-all duration-200">
+                                Next Question<i class="fas fa-chevron-right ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feedback Section (Hidden by default, shown after answer) -->
+                <div id="feedbackSection" class="bg-white rounded-2xl shadow-elevation-3 border border-slate-200 p-6 hidden">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-check text-emerald-600 text-xl"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-heading font-bold text-emerald-800 mb-2">Correct! Well done!</h4>
+                            <p class="text-slate-700 mb-4">
+                                "Drop, Cover, and Hold On" is the correct immediate response during an earthquake. This protects you from falling objects and debris.
+                            </p>
+                            <div class="bg-emerald-50 border border-emerald-200 rounded-lg p-4">
+                                <h5 class="font-medium text-emerald-800 mb-2">Why this is correct:</h5>
+                                <ul class="text-sm text-emerald-700 space-y-1">
+                                    <li>• Drop to hands and knees to prevent being knocked over</li>
+                                    <li>• Take cover under a sturdy desk or table if available</li>
+                                    <li>• Hold on to your shelter and protect your head and neck</li>
+                                </ul>
+                            </div>
+                            <div class="mt-4 flex items-center space-x-4">
+                                <span class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-sm font-medium">
+                                    <i class="fas fa-plus mr-1"></i>+25 Points
+                                </span>
+                                <span class="text-sm text-slate-500">Badge Progress: Earthquake Hero (7/10)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="lg:col-span-1">
+                <!-- Question Navigator -->
+                <div class="bg-white rounded-2xl shadow-elevation-3 border border-slate-200 p-6 mb-6">
+                    <h3 class="font-heading font-bold text-slate-800 mb-4">Question Navigator</h3>
+                    <div class="grid grid-cols-5 gap-2">
+                        <button class="w-10 h-10 bg-emerald-100 text-emerald-700 rounded-lg font-bold text-sm hover:bg-emerald-200 transition-colors duration-200" title="Answered">1</button>
+                        <button class="w-10 h-10 bg-emerald-100 text-emerald-700 rounded-lg font-bold text-sm hover:bg-emerald-200 transition-colors duration-200" title="Answered">2</button>
+                        <button class="w-10 h-10 bg-primary text-white rounded-lg font-bold text-sm" title="Current">3</button>
+                        <button class="w-10 h-10 bg-slate-100 text-slate-600 rounded-lg font-bold text-sm hover:bg-slate-200 transition-colors duration-200" title="Not Answered">4</button>
+                        <button class="w-10 h-10 bg-slate-100 text-slate-600 rounded-lg font-bold text-sm hover:bg-slate-200 transition-colors duration-200" title="Not Answered">5</button>
+                        <button class="w-10 h-10 bg-slate-100 text-slate-600 rounded-lg font-bold text-sm hover:bg-slate-200 transition-colors duration-200" title="Not Answered">6</button>
+                        <button class="w-10 h-10 bg-amber-100 text-amber-700 rounded-lg font-bold text-sm hover:bg-amber-200 transition-colors duration-200" title="Marked for Review">7</button>
+                        <button class="w-10 h-10 bg-slate-100 text-slate-600 rounded-lg font-bold text-sm hover:bg-slate-200 transition-colors duration-200" title="Not Answered">8</button>
+                        <button class="w-10 h-10 bg-slate-100 text-slate-600 rounded-lg font-bold text-sm hover:bg-slate-200 transition-colors duration-200" title="Not Answered">9</button>
+                        <button class="w-10 h-10 bg-slate-100 text-slate-600 rounded-lg font-bold text-sm hover:bg-slate-200 transition-colors duration-200" title="Not Answered">10</button>
+                    </div>
+                    
+                    <!-- Legend -->
+                    <div class="mt-4 space-y-2 text-xs">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-4 h-4 bg-emerald-100 rounded"></div>
+                            <span class="text-slate-600">Answered</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <div class="w-4 h-4 bg-primary rounded"></div>
+                            <span class="text-slate-600">Current</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <div class="w-4 h-4 bg-amber-100 rounded"></div>
+                            <span class="text-slate-600">Marked</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <div class="w-4 h-4 bg-slate-100 rounded"></div>
+                            <span class="text-slate-600">Not Answered</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Current Score -->
+                <div class="bg-white rounded-2xl shadow-elevation-3 border border-slate-200 p-6 mb-6">
+                    <h3 class="font-heading font-bold text-slate-800 mb-4">Current Score</h3>
+                    <div class="text-center">
+                        <div class="relative w-24 h-24 mx-auto mb-4">
+                            <svg class="w-24 h-24 transform -rotate-90" viewBox="0 0 100 100">
+                                <circle cx="50" cy="50" r="40" stroke="#E2E8F0" stroke-width="8" fill="none"/>
+                                <circle cx="50" cy="50" r="40" stroke="#2563EB" stroke-width="8" fill="none" stroke-dasharray="251.2" stroke-dashoffset="175.84" class="transition-all duration-500"/>
+                            </svg>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <span class="text-xl font-bold text-primary">75%</span>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-sm">
+                                <span class="text-slate-600">Correct:</span>
+                                <span class="font-medium text-emerald-600">2/2</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-slate-600">Points:</span>
+                                <span class="font-medium text-primary">150</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-slate-600">Streak:</span>
+                                <span class="font-medium text-amber-600">2 🔥</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Badge Progress -->
+                <div class="bg-white rounded-2xl shadow-elevation-3 border border-slate-200 p-6">
+                    <h3 class="font-heading font-bold text-slate-800 mb-4">Badge Progress</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center">
+                                <i class="fas fa-mountain text-white"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="font-medium text-slate-800">Earthquake Hero</h4>
+                                <div class="progress-bar mt-1">
+                                    <div class="progress-fill" style="width: 70%"></div>
+                                </div>
+                                <p class="text-xs text-slate-500 mt-1">7/10 questions</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 bg-slate-200 rounded-full flex items-center justify-center">
+                                <i class="fas fa-fire text-slate-400"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="font-medium text-slate-400">Fire Safety Expert</h4>
+                                <p class="text-xs text-slate-400">Complete fire safety quiz</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quiz Controls (Mobile) -->
+        <div class="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 p-4">
+            <div class="flex items-center justify-between">
+                <button class="flex items-center px-4 py-2 text-slate-600 hover:text-slate-800 transition-colors duration-200">
+                    <i class="fas fa-chevron-left mr-2"></i>Previous
+                </button>
+                
+                <div class="flex items-center space-x-2">
+                    <span class="text-sm text-slate-600">3/10</span>
+                    <div class="w-20 h-2 bg-slate-200 rounded-full">
+                        <div class="h-full bg-primary rounded-full" style="width: 30%"></div>
+                    </div>
+                </div>
+                
+                <button class="flex items-center px-4 py-2 bg-primary text-white rounded-lg font-medium">
+                    Next<i class="fas fa-chevron-right ml-2"></i>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Submit Quiz Modal -->
+    <div id="submitModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-2xl shadow-elevation-4 max-w-md w-full p-6">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-flag-checkered text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold text-slate-800 mb-2">Submit Quiz?</h3>
+                    <p class="text-slate-600 mb-6">
+                        You have answered 8 out of 10 questions. Are you sure you want to submit your quiz?
+                    </p>
+                    
+                    <div class="space-y-3">
+                        <button class="w-full bg-gradient-to-r from-primary to-secondary text-white py-3 rounded-lg font-medium hover:shadow-lg transition-all duration-200">
+                            Submit Quiz
+                        </button>
+                        <button class="w-full border-2 border-slate-200 text-slate-600 py-3 rounded-lg font-medium hover:bg-slate-50 transition-all duration-200" onclick="closeSubmitModal()">
+                            Continue Quiz
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Quiz functionality
+        let currentQuestion = 3;
+        let totalQuestions = 10;
+        let score = 150;
+        let timeLeft = 765; // 12:45 in seconds
+        let timer;
+
+        // Start timer
+        function startTimer() {
+            timer = setInterval(() => {
+                timeLeft--;
+                updateTimerDisplay();
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    autoSubmitQuiz();
+                }
+            }, 1000);
+        }
+
+        function updateTimerDisplay() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            const timeDisplay = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+            document.querySelector('.text-accent').textContent = timeDisplay;
+        }
+
+        // Answer selection
+        document.querySelectorAll('input[name="question3"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                // Remove previous selections
+                document.querySelectorAll('.quiz-option').forEach(option => {
+                    option.classList.remove('border-primary', 'bg-primary-50');
+                    option.classList.add('border-slate-200');
+                });
+                
+                // Highlight selected option
+                const selectedOption = this.closest('.quiz-option');
+                selectedOption.classList.remove('border-slate-200');
+                selectedOption.classList.add('border-primary', 'bg-primary-50');
+                
+                // Show feedback after a short delay
+                setTimeout(() => {
+                    showFeedback(this.value);
+                }, 500);
+            });
+        });
+
+        function showFeedback(answer) {
+            const feedbackSection = document.getElementById('feedbackSection');
+            feedbackSection.classList.remove('hidden');
+            feedbackSection.scrollIntoView({ behavior: 'smooth' });
+            
+            // Update score if correct
+            if (answer === 'B') {
+                score += 25;
+                updateScoreDisplay();
+            }
+        }
+
+        function updateScoreDisplay() {
+            document.querySelector('.text-secondary').textContent = score;
+        }
+
+        // Navigation
+        function nextQuestion() {
+            if (currentQuestion < totalQuestions) {
+                currentQuestion++;
+                updateProgress();
+                // In a real app, load next question data
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestion > 1) {
+                currentQuestion--;
+                updateProgress();
+                // In a real app, load previous question data
+            }
+        }
+
+        function updateProgress() {
+            const progress = (currentQuestion / totalQuestions) * 100;
+            document.querySelector('.progress-fill').style.width = `${progress}%`;
+            document.querySelector('.text-slate-500').textContent = `Question ${currentQuestion} of ${totalQuestions}`;
+        }
+
+        // Question navigator
+        document.querySelectorAll('.grid button').forEach((btn, index) => {
+            btn.addEventListener('click', function() {
+                if (!this.classList.contains('bg-primary')) {
+                    currentQuestion = index + 1;
+                    updateProgress();
+                    // In a real app, load selected question
+                }
+            });
+        });
+
+        // Submit modal
+        function showSubmitModal() {
+            document.getElementById('submitModal').classList.remove('hidden');
+        }
+
+        function closeSubmitModal() {
+            document.getElementById('submitModal').classList.add('hidden');
+        }
+
+        function autoSubmitQuiz() {
+            // Auto-submit when time runs out
+            window.location.href = 'student_dashboard.html';
+        }
+
+        // Language selector
+        document.getElementById('languageSelector').addEventListener('change', function() {
+            console.log('Language changed to:', this.value);
+            // In a real app, this would reload content in selected language
+        });
+
+        // Mark for review
+        document.querySelector('[title="Mark for Review"]').addEventListener('click', function() {
+            this.classList.toggle('text-amber-500');
+            // Update question navigator
+            const currentBtn = document.querySelector('.bg-primary');
+            if (this.classList.contains('text-amber-500')) {
+                currentBtn.classList.remove('bg-primary');
+                currentBtn.classList.add('bg-amber-100', 'text-amber-700');
+            }
+        });
+
+        // Mobile navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add event listeners for mobile controls
+            const mobileNext = document.querySelector('.lg\\:hidden button:last-child');
+            const mobilePrev = document.querySelector('.lg\\:hidden button:first-child');
+            
+            if (mobileNext) {
+                mobileNext.addEventListener('click', nextQuestion);
+            }
+            if (mobilePrev) {
+                mobilePrev.addEventListener('click', previousQuestion);
+            }
+        });
+
+        // Initialize
+        startTimer();
+        
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            switch(e.key) {
+                case 'ArrowLeft':
+                    previousQuestion();
+                    break;
+                case 'ArrowRight':
+                    nextQuestion();
+                    break;
+                case '1':
+                case '2':
+                case '3':
+                case '4':
+                    const options = ['A', 'B', 'C', 'D'];
+                    const radio = document.querySelector(`input[value="${options[parseInt(e.key) - 1]}"]`);
+                    if (radio) radio.click();
+                    break;
+            }
+        });
+
+        // Auto-save progress
+        setInterval(() => {
+            // In a real app, save progress to localStorage or server
+            localStorage.setItem('quizProgress', JSON.stringify({
+                currentQuestion,
+                score,
+                timeLeft,
+                answers: {} // Store user answers
+            }));
+        }, 10000); // Save every 10 seconds
+    </script>
+<script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+</body>
+</html>

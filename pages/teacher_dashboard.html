@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teacher Dashboard - DisasterGuard Academy</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fdisastergu5854back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.8"></script>
+</head>
+<body class="bg-gradient-to-br from-blue-50 via-emerald-50 to-slate-50 min-h-screen">
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 opacity-5">
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <pattern id="disaster-pattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+                    <circle cx="50" cy="50" r="2" fill="#2563EB"/>
+                    <circle cx="25" cy="25" r="1" fill="#059669"/>
+                    <circle cx="75" cy="75" r="1.5" fill="#DC2626"/>
+                </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#disaster-pattern)"/>
+        </svg>
+    </div>
+
+    <!-- Header -->
+    <header class="relative z-10 bg-white/80 backdrop-blur-sm border-b border-slate-200">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
+                        <i class="fas fa-shield-alt text-white text-lg"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-heading font-bold text-slate-800">DisasterGuard Academy</h1>
+                        <p class="text-xs text-slate-500">Teacher Dashboard</p>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <nav class="hidden md:flex items-center space-x-6">
+                    <a href="teacher_dashboard.html" class="text-primary font-medium">Dashboard</a>
+                    <a href="interactive_disaster_module.html" class="text-slate-600 hover:text-primary transition-colors">Modules</a>
+                    <a href="quiz_interface.html" class="text-slate-600 hover:text-primary transition-colors">Quizzes</a>
+                    <a href="emergency_toolkit.html" class="text-slate-600 hover:text-primary transition-colors">Emergency Kit</a>
+                </nav>
+
+                <!-- User Profile -->
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <button id="notificationBtn" class="p-2 text-slate-600 hover:text-primary transition-colors relative">
+                            <i class="fas fa-bell text-lg"></i>
+                            <span class="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-xs rounded-full flex items-center justify-center">3</span>
+                        </button>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150&h=150&auto=format&fit=crop&ixlib=rb-4.0.3" alt="Teacher Profile" class="w-8 h-8 rounded-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                        <div class="hidden md:block">
+                            <p class="text-sm font-medium text-slate-800">Ms. Sarah Johnson</p>
+                            <p class="text-xs text-slate-500">Grade 8 Teacher</p>
+                        </div>
+                        <button id="profileDropdown" class="text-slate-600 hover:text-primary">
+                            <i class="fas fa-chevron-down text-sm"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="relative z-10 container mx-auto px-4 py-8">
+        <!-- Welcome Section -->
+        <div class="mb-8">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                <div>
+                    <h2 class="text-3xl font-heading font-bold text-slate-800 mb-2">Welcome back, Ms. Johnson!</h2>
+                    <p class="text-slate-600">Manage your disaster preparedness curriculum and track student progress</p>
+                </div>
+                <div class="mt-4 md:mt-0 flex flex-wrap gap-3">
+                    <button id="quickQuizBtn" class="bg-gradient-to-r from-primary to-secondary text-white px-6 py-3 rounded-lg font-medium transition-all duration-200 hover:shadow-lg transform hover:-translate-y-0.5">
+                        <i class="fas fa-play mr-2"></i>Quick Quiz Launch
+                    </button>
+                    <button id="scheduledrillBtn" class="bg-white border border-slate-200 text-slate-700 px-6 py-3 rounded-lg font-medium transition-all duration-200 hover:shadow-md">
+                        <i class="fas fa-calendar-plus mr-2"></i>Schedule Drill
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Overview -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <!-- Total Students -->
+            <div class="bg-white rounded-2xl shadow-elevation-2 border border-slate-200 p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-slate-600 mb-1">Total Students</p>
+                        <p class="text-3xl font-bold text-slate-800">156</p>
+                        <p class="text-sm text-emerald-600 mt-1">
+                            <i class="fas fa-arrow-up mr-1"></i>+12 this month
+                        </p>
+                    </div>
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-users text-primary text-xl"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course Completion -->
+            <div class="bg-white rounded-2xl shadow-elevation-2 border border-slate-200 p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-slate-600 mb-1">Avg. Completion</p>
+                        <p class="text-3xl font-bold text-slate-800">78%</p>
+                        <p class="text-sm text-emerald-600 mt-1">
+                            <i class="fas fa-arrow-up mr-1"></i>+5% this week
+                        </p>
+                    </div>
+                    <div class="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-chart-line text-secondary text-xl"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Active Drills -->
+            <div class="bg-white rounded-2xl shadow-elevation-2 border border-slate-200 p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-slate-600 mb-1">Active Drills</p>
+                        <p class="text-3xl font-bold text-slate-800">4</p>
+                        <p class="text-sm text-amber-600 mt-1">
+                            <i class="fas fa-clock mr-1"></i>2 scheduled today
+                        </p>
+                    </div>
+                    <div class="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-exclamation-triangle text-amber-600 text-xl"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certificates Issued -->
+            <div class="bg-white rounded-2xl shadow-elevation-2 border border-slate-200 p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-slate-600 mb-1">Certificates</p>
+                        <p class="text-3xl font-bold text-slate-800">89</p>
+                        <p class="text-sm text-emerald-600 mt-1">
+                            <i class="fas fa-award mr-1"></i>15 this week
+                        </p>
+                    </div>
+                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-certificate text-purple-600 text-xl"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Dashboard Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Left Column -->
+            <div class="lg:col-span-2 space-y-8">
+                <!-- Class Overview Cards -->
+                <section id="classOverview">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-xl font-heading font-bold text-slate-800">Class Overview</h3>
+                        <button class="text-primary hover:text-primary-700 text-sm font-medium">View All Classes</button>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Class 8A -->
+                        <div class="bg-white rounded-2xl shadow-elevation-2 border border-slate-200 p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <div>
+                                    <h4 class="text-lg font-semibold text-slate-800">Class 8A</h4>
+                                    <p class="text-sm text-slate-600">32 Students</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-2xl font-bold text-emerald-600">85%</p>
+                                    <p class="text-xs text-slate-500">Completion Rate</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Readiness Heatmap -->
+                            <div class="mb-4">
+                                <p class="text-sm font-medium text-slate-700 mb-2">Student Readiness</p>
+                                <div class="grid grid-cols-8 gap-1">
+                                    <div class="w-4 h-4 bg-emerald-500 rounded-sm" title="Excellent"></div>
+                                    <div class="w-4 h-4 bg-emerald-400 rounded-sm" title="Good"></div>
+                                    <div class="w-4 h-4 bg-emerald-500 rounded-sm" title="Excellent"></div>
+                                    <div class="w-4 h-4 bg-amber-400 rounded-sm" title="Needs Help"></div>
+                                    <div class="w-4 h-4 bg-emerald-400 rounded-sm" title="Good"></div>
+                                    <div class="w-4 h-4 bg-emerald-500 rounded-sm" title="Excellent"></div>
+                                    <div class="w-4 h-4 bg-red-400 rounded-sm" title="Critical"></div>
+                                    <div class="w-4 h-4 bg-emerald-400 rounded-sm" title="Good"></div>
+                                </div>
+                                <div class="flex items-center justify-between text-xs text-slate-500 mt-2">
+                                    <span>Needs Support: 2</span>
+                                    <span>On Track: 30</span>
+                                </div>
+                            </div>
+                            
+                            <div class="flex space-x-2">
+                                <button class="flex-1 bg-primary text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-primary-700 transition-colors">
+                                    <i class="fas fa-play mr-1"></i>Start Quiz
+                                </button>
+                                <button class="px-4 py-2 border border-slate-200 text-slate-600 rounded-lg text-sm hover:bg-slate-50 transition-colors">
+                                    <i class="fas fa-chart-bar"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Class 8B -->
+                        <div class="bg-white rounded-2xl shadow-elevation-2 border border-slate-200 p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <div>
+                                    <h4 class="text-lg font-semibold text-slate-800">Class 8B</h4>
+                                    <p class="text-sm text-slate-600">28 Students</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-2xl font-bold text-amber-600">72%</p>
+                                    <p class="text-xs text-slate-500">Completion Rate</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Readiness Heatmap -->
+                            <div class="mb-4">
+                                <p class="text-sm font-medium text-slate-700 mb-2">Student Readiness</p>
+                                <div class="grid grid-cols-7 gap-1">
+                                    <div class="w-4 h-4 bg-emerald-400 rounded-sm" title="Good"></div>
+                                    <div class="w-4 h-4 bg-amber-400 rounded-sm" title="Needs Help"></div>
+                                    <div class="w-4 h-4 bg-emerald-500 rounded-sm" title="Excellent"></div>
+                                    <div class="w-4 h-4 bg-amber-400 rounded-sm" title="Needs Help"></div>
+                                    <div class="w-4 h-4 bg-red-400 rounded-sm" title="Critical"></div>
+                                    <div class="w-4 h-4 bg-emerald-400 rounded-sm" title="Good"></div>
+                                    <div class="w-4 h-4 bg-emerald-500 rounded-sm" title="Excellent"></div>
+                                </div>
+                                <div class="flex items-center justify-between text-xs text-slate-500 mt-2">
+                                    <span>Needs Support: 5</span>
+                                    <span>On Track: 23</span>
+                                </div>
+                            </div>
+                            
+                            <div class="flex space-x-2">
+                                <button class="flex-1 bg-primary text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-primary-700 transition-colors">
+                                    <i class="fas fa-play mr-1"></i>Start Quiz
+                                </button>
+                                <button class="px-4 py-2 border border-slate-200 text-slate-600 rounded-lg text-sm hover:bg-slate-50 transition-colors">
+                                    <i class="fas fa-chart-bar"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Curriculum Integration Panel -->
+                <section id="curriculumPanel">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-xl font-heading font-bold text-slate-800">Curriculum Integration</h3>
+                        <button class="text-primary hover:text-primary-700 text-sm font-medium">Browse All Resources</button>
+                    </div>
+                    
+                    <div class="bg-white rounded-2xl shadow-elevation-2 border border-slate-200 p-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- Ready-made Lesson Plans -->
+                            <div class="space-y-4">
+                                <h4 class="font-semibold text-slate-800 flex items-center">
+                                    <i class="fas fa-book-open text-primary mr-2"></i>Ready-made Lesson Plans
+                                </h4>
+                                <div class="space-y-3">
+                                    <div class="flex items-center justify-between p-3 bg-slate-50 rounded-lg">
+                                        <div>
+                                            <p class="font-medium text-slate-800">Earthquake Safety Basics</p>
+                                            <p class="text-sm text-slate-600">15 min • Grade 8</p>
+                                        </div>
+                                        <button class="text-primary hover:text-primary-700">
+                                            <i class="fas fa-download"></i>
+                                        </button>
+                                    </div>
+                                    <div class="flex items-center justify-between p-3 bg-slate-50 rounded-lg">
+                                        <div>
+                                            <p class="font-medium text-slate-800">Fire Emergency Response</p>
+                                            <p class="text-sm text-slate-600">20 min • Grade 8</p>
+                                        </div>
+                                        <button class="text-primary hover:text-primary-700">
+                                            <i class="fas fa-download"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Presentation Slides -->
+                            <div class="space-y-4">
+                                <h4 class="font-semibold text-slate-800 flex items-center">
+                                    <i class="fas fa-presentation text-secondary mr-2"></i>Presentation Slides
+                                </h4>
+                                <div class="space-y-3">
+                                    <div class="flex items-center justify-between p-3 bg-slate-50 rounded-lg">
+                                        <div>
+                                            <p class="font-medium text-slate-800">Flood Preparedness</p>
+                                            <p class="text-sm text-slate-600">25 slides • Interactive</p>
+                                        </div>
+                                        <button class="text-secondary hover:text-secondary-700">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                    <div class="flex items-center justify-between p-3 bg-slate-50 rounded-lg">
+                                        <div>
+                                            <p class="font-medium text-slate-800">Cyclone Safety Guide</p>
+                                            <p class="text-sm text-slate-600">18 slides • Video included</p>
+                                        </div>
+                                        <button class="text-secondary hover:text-secondary-700">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- One-click Quiz Launch -->
+                        <div class="mt-6 p-4 bg-gradient-to-r from-primary-50 to-secondary-50 rounded-lg border border-primary-200">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <h4 class="font-semibold text-slate-800">Quick Quiz Launch</h4>
+                                    <p class="text-sm text-slate-600">Generate instant join codes for your students</p>
+                                </div>
+                                <button id="generateQuizCode" class="bg-gradient-to-r from-primary to-secondary text-white px-6 py-3 rounded-lg font-medium hover:shadow-lg transition-all duration-200">
+                                    <i class="fas fa-rocket mr-2"></i>Launch Quiz
+                                </button>
+                            </div>
+                            <div id="quizCodeDisplay" class="hidden mt-4 p-3 bg-white rounded-lg border border-slate-200">
+                                <p class="text-sm text-slate-600 mb-1">Student Join Code:</p>
+                                <p class="text-2xl font-mono font-bold text-primary" id="quizCode">ABC123</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Student Progress Tracking -->
+                <section id="progressTracking">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-xl font-heading font-bold text-slate-800">Student Progress Tracking</h3>
+                        <div class="flex space-x-2">
+                            <button class="text-slate-600 hover:text-primary text-sm">
+                                <i class="fas fa-download mr-1"></i>Export
+                            </button>
+                            <button class="text-slate-600 hover:text-primary text-sm">
+                                <i class="fas fa-filter mr-1"></i>Filter
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-2xl shadow-elevation-2 border border-slate-200 overflow-hidden">
+                        <div class="overflow-x-auto">
+                            <table class="w-full">
+                                <thead class="bg-slate-50 border-b border-slate-200">
+                                    <tr>
+                                        <th class="text-left px-6 py-4 text-sm font-medium text-slate-700">Student</th>
+                                        <th class="text-left px-6 py-4 text-sm font-medium text-slate-700">Class</th>
+                                        <th class="text-left px-6 py-4 text-sm font-medium text-slate-700">Progress</th>
+                                        <th class="text-left px-6 py-4 text-sm font-medium text-slate-700">Quiz Score</th>
+                                        <th class="text-left px-6 py-4 text-sm font-medium text-slate-700">Badges</th>
+                                        <th class="text-left px-6 py-4 text-sm font-medium text-slate-700">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-200">
+                                    <tr class="hover:bg-slate-50">
+                                        <td class="px-6 py-4">
+                                            <div class="flex items-center space-x-3">
+                                                <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop" alt="Student" class="w-8 h-8 rounded-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                                                <div>
+                                                    <p class="font-medium text-slate-800">Arjun Sharma</p>
+                                                    <p class="text-sm text-slate-600">ID: ST001</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 text-slate-600">8A</td>
+                                        <td class="px-6 py-4">
+                                            <div class="flex items-center space-x-2">
+                                                <div class="w-20 bg-slate-200 rounded-full h-2">
+                                                    <div class="bg-emerald-500 h-2 rounded-full" style="width: 92%"></div>
+                                                </div>
+                                                <span class="text-sm text-slate-600">92%</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <span class="text-emerald-600 font-medium">95/100</span>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <div class="flex space-x-1">
+                                                <span class="w-6 h-6 bg-amber-100 rounded-full flex items-center justify-center" title="Fire Safety Hero">
+                                                    <i class="fas fa-fire text-amber-600 text-xs"></i>
+                                                </span>
+                                                <span class="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center" title="Earthquake Expert">
+                                                    <i class="fas fa-mountain text-blue-600 text-xs"></i>
+                                                </span>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <span class="px-3 py-1 bg-emerald-100 text-emerald-800 text-sm rounded-full">Excellent</span>
+                                        </td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50">
+                                        <td class="px-6 py-4">
+                                            <div class="flex items-center space-x-3">
+                                                <img src="https://images.pixabay.com/photo/2016/11/21/12/42/beard-1845166_150.jpg" alt="Student" class="w-8 h-8 rounded-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                                                <div>
+                                                    <p class="font-medium text-slate-800">Priya Patel</p>
+                                                    <p class="text-sm text-slate-600">ID: ST002</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 text-slate-600">8A</td>
+                                        <td class="px-6 py-4">
+                                            <div class="flex items-center space-x-2">
+                                                <div class="w-20 bg-slate-200 rounded-full h-2">
+                                                    <div class="bg-amber-500 h-2 rounded-full" style="width: 68%"></div>
+                                                </div>
+                                                <span class="text-sm text-slate-600">68%</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <span class="text-amber-600 font-medium">78/100</span>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <div class="flex space-x-1">
+                                                <span class="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center" title="Flood Rescuer">
+                                                    <i class="fas fa-water text-blue-600 text-xs"></i>
+                                                </span>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <span class="px-3 py-1 bg-amber-100 text-amber-800 text-sm rounded-full">Needs Help</span>
+                                        </td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50">
+                                        <td class="px-6 py-4">
+                                            <div class="flex items-center space-x-3">
+                                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150&h=150&auto=format&fit=crop&ixlib=rb-4.0.3" alt="Student" class="w-8 h-8 rounded-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                                                <div>
+                                                    <p class="font-medium text-slate-800">Rahul Kumar</p>
+                                                    <p class="text-sm text-slate-600">ID: ST003</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 text-slate-600">8B</td>
+                                        <td class="px-6 py-4">
+                                            <div class="flex items-center space-x-2">
+                                                <div class="w-20 bg-slate-200 rounded-full h-2">
+                                                    <div class="bg-emerald-500 h-2 rounded-full" style="width: 85%"></div>
+                                                </div>
+                                                <span class="text-sm text-slate-600">85%</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <span class="text-emerald-600 font-medium">88/100</span>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <div class="flex space-x-1">
+                                                <span class="w-6 h-6 bg-purple-100 rounded-full flex items-center justify-center" title="Cyclone Guardian">
+                                                    <i class="fas fa-wind text-purple-600 text-xs"></i>
+                                                </span>
+                                                <span class="w-6 h-6 bg-amber-100 rounded-full flex items-center justify-center" title="Fire Safety Hero">
+                                                    <i class="fas fa-fire text-amber-600 text-xs"></i>
+                                                </span>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <span class="px-3 py-1 bg-emerald-100 text-emerald-800 text-sm rounded-full">Good</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Right Column -->
+            <div class="space-y-8">
+                <!-- Virtual Drill Scheduler -->
+                <section id="drillScheduler">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-lg font-heading font-bold text-slate-800">Virtual Drill Scheduler</h3>
+                        <button class="text-primary hover:text-primary-700 text-sm">
+                            <i class="fas fa-plus mr-1"></i>Add Drill
+                        </button>
+                    </div>
+                    
+                    <div class="bg-white rounded-2xl shadow-elevation-2 border border-slate-200 p-6">
+                        <div class="space-y-4">
+                            <!-- Upcoming Drill -->
+                            <div class="p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                                <div class="flex items-center justify-between mb-2">
+                                    <h4 class="font-medium text-slate-800">Fire Drill - Class 8A</h4>
+                                    <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">Today 2:30 PM</span>
+                                </div>
+                                <p class="text-sm text-slate-600 mb-3">Evacuation procedure practice</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-sm text-slate-500">
+                                        <i class="fas fa-users mr-1"></i>32 participants
+                                    </span>
+                                    <button class="text-blue-600 hover:text-blue-700 text-sm font-medium">
+                                        <i class="fas fa-play mr-1"></i>Start
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Scheduled Drill -->
+                            <div class="p-4 bg-slate-50 border border-slate-200 rounded-lg">
+                                <div class="flex items-center justify-between mb-2">
+                                    <h4 class="font-medium text-slate-800">Earthquake Drill - Class 8B</h4>
+                                    <span class="text-xs bg-slate-200 text-slate-700 px-2 py-1 rounded-full">Tomorrow 10:00 AM</span>
+                                </div>
+                                <p class="text-sm text-slate-600 mb-3">Drop, cover, and hold practice</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-sm text-slate-500">
+                                        <i class="fas fa-users mr-1"></i>28 participants
+                                    </span>
+                                    <button class="text-slate-600 hover:text-primary text-sm font-medium">
+                                        <i class="fas fa-edit mr-1"></i>Edit
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Auto-reminder Status -->
+                        <div class="mt-6 p-3 bg-emerald-50 border border-emerald-200 rounded-lg">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-2">
+                                    <i class="fas fa-bell text-emerald-600"></i>
+                                    <span class="text-sm font-medium text-emerald-800">Auto-reminders Active</span>
+                                </div>
+                                <span class="text-xs text-emerald-600">156 notifications sent</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Weekly Challenges -->
+                <section id="weeklyChallenges">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-lg font-heading font-bold text-slate-800">Weekly Challenges</h3>
+                        <button class="text-primary hover:text-primary-700 text-sm">
+                            <i class="fas fa-plus mr-1"></i>Create
+                        </button>
+                    </div>
+                    
+                    <div class="bg-white rounded-2xl shadow-elevation-2 border border-slate-200 p-6">
+                        <div class="space-y-4">
+                            <!-- Active Challenge -->
+                            <div class="p-4 bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 rounded-lg">
+                                <div class="flex items-center justify-between mb-2">
+                                    <h4 class="font-medium text-slate-800">Family Emergency Kit</h4>
+                                    <span class="text-xs bg-amber-100 text-amber-800 px-2 py-1 rounded-full">Active</span>
+                                </div>
+                                <p class="text-sm text-slate-600 mb-3">Build a complete family emergency kit with parents</p>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-4">
+                                        <span class="text-sm text-slate-500">
+                                            <i class="fas fa-users mr-1"></i>89 families
+                                        </span>
+                                        <span class="text-sm text-emerald-600">
+                                            <i class="fas fa-check mr-1"></i>34 completed
+                                        </span>
+                                    </div>
+                                    <button class="text-amber-600 hover:text-amber-700 text-sm font-medium">
+                                        <i class="fas fa-eye mr-1"></i>View
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Upcoming Challenge -->
+                            <div class="p-4 bg-slate-50 border border-slate-200 rounded-lg">
+                                <div class="flex items-center justify-between mb-2">
+                                    <h4 class="font-medium text-slate-800">Home Safety Audit</h4>
+                                    <span class="text-xs bg-slate-200 text-slate-700 px-2 py-1 rounded-full">Next Week</span>
+                                </div>
+                                <p class="text-sm text-slate-600 mb-3">Identify and fix safety hazards at home</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-sm text-slate-500">
+                                        <i class="fas fa-calendar mr-1"></i>Starts Dec 15
+                                    </span>
+                                    <button class="text-slate-600 hover:text-primary text-sm font-medium">
+                                        <i class="fas fa-edit mr-1"></i>Setup
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Quick Actions -->
+                <section id="quickActions">
+                    <h3 class="text-lg font-heading font-bold text-slate-800 mb-6">Quick Actions</h3>
+                    
+                    <div class="bg-white rounded-2xl shadow-elevation-2 border border-slate-200 p-6">
+                        <div class="grid grid-cols-2 gap-4">
+                            <button class="p-4 bg-blue-50 hover:bg-blue-100 border border-blue-200 rounded-lg transition-colors text-center">
+                                <i class="fas fa-print text-blue-600 text-xl mb-2"></i>
+                                <p class="text-sm font-medium text-slate-800">Print Worksheets</p>
+                            </button>
+                            <button class="p-4 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 rounded-lg transition-colors text-center">
+                                <i class="fas fa-chart-line text-emerald-600 text-xl mb-2"></i>
+                                <p class="text-sm font-medium text-slate-800">Progress Report</p>
+                            </button>
+                            <button class="p-4 bg-purple-50 hover:bg-purple-100 border border-purple-200 rounded-lg transition-colors text-center">
+                                <i class="fas fa-certificate text-purple-600 text-xl mb-2"></i>
+                                <p class="text-sm font-medium text-slate-800">Issue Certificates</p>
+                            </button>
+                            <button class="p-4 bg-amber-50 hover:bg-amber-100 border border-amber-200 rounded-lg transition-colors text-center">
+                                <i class="fas fa-book text-amber-600 text-xl mb-2"></i>
+                                <p class="text-sm font-medium text-slate-800">Resource Library</p>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Quiz Code Modal -->
+    <div id="quizModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-white rounded-2xl shadow-elevation-4 p-8 max-w-md w-full mx-4">
+            <div class="text-center">
+                <div class="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-rocket text-white text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-heading font-bold text-slate-800 mb-2">Quiz Launched!</h3>
+                <p class="text-slate-600 mb-6">Share this code with your students to join the quiz</p>
+                
+                <div class="bg-slate-50 rounded-lg p-6 mb-6">
+                    <p class="text-sm text-slate-600 mb-2">Student Join Code:</p>
+                    <p class="text-4xl font-mono font-bold text-primary" id="modalQuizCode">ABC123</p>
+                </div>
+                
+                <div class="flex space-x-3">
+                    <button id="copyCodeBtn" class="flex-1 bg-slate-100 text-slate-700 px-4 py-3 rounded-lg font-medium hover:bg-slate-200 transition-colors">
+                        <i class="fas fa-copy mr-2"></i>Copy Code
+                    </button>
+                    <button id="closeModalBtn" class="flex-1 bg-gradient-to-r from-primary to-secondary text-white px-4 py-3 rounded-lg font-medium hover:shadow-lg transition-all duration-200">
+                        <i class="fas fa-check mr-2"></i>Done
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Generate random quiz code
+        function generateQuizCode() {
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            let code = '';
+            for (let i = 0; i < 6; i++) {
+                code += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return code;
+        }
+
+        // Quiz launch functionality
+        document.getElementById('generateQuizCode').addEventListener('click', function() {
+            const code = generateQuizCode();
+            document.getElementById('modalQuizCode').textContent = code;
+            document.getElementById('quizModal').classList.remove('hidden');
+            document.getElementById('quizModal').classList.add('flex');
+        });
+
+        document.getElementById('quickQuizBtn').addEventListener('click', function() {
+            const code = generateQuizCode();
+            document.getElementById('modalQuizCode').textContent = code;
+            document.getElementById('quizModal').classList.remove('hidden');
+            document.getElementById('quizModal').classList.add('flex');
+        });
+
+        // Close modal
+        document.getElementById('closeModalBtn').addEventListener('click', function() {
+            document.getElementById('quizModal').classList.add('hidden');
+            document.getElementById('quizModal').classList.remove('flex');
+        });
+
+        // Copy code functionality
+        document.getElementById('copyCodeBtn').addEventListener('click', function() {
+            const code = document.getElementById('modalQuizCode').textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                this.innerHTML = '<i class="fas fa-check mr-2"></i>Copied!';
+                setTimeout(() => {
+                    this.innerHTML = '<i class="fas fa-copy mr-2"></i>Copy Code';
+                }, 2000);
+            });
+        });
+
+        // Close modal when clicking outside
+        document.getElementById('quizModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.classList.add('hidden');
+                this.classList.remove('flex');
+            }
+        });
+
+        // Notification functionality
+        document.getElementById('notificationBtn').addEventListener('click', function() {
+            // In a real app, this would show notifications dropdown
+            console.log('Show notifications');
+        });
+
+        // Profile dropdown functionality
+        document.getElementById('profileDropdown').addEventListener('click', function() {
+            // In a real app, this would show profile dropdown
+            console.log('Show profile dropdown');
+        });
+
+        // Schedule drill functionality
+        document.getElementById('scheduledrillBtn').addEventListener('click', function() {
+            // In a real app, this would open drill scheduling modal
+            console.log('Schedule drill');
+        });
+
+        // Add hover effects to progress bars
+        document.querySelectorAll('.progress-fill').forEach(bar => {
+            bar.addEventListener('mouseenter', function() {
+                this.style.transform = 'scaleY(1.2)';
+            });
+            bar.addEventListener('mouseleave', function() {
+                this.style.transform = 'scaleY(1)';
+            });
+        });
+
+        // Simulate real-time updates
+        setInterval(() => {
+            // Update notification count
+            const notificationBadge = document.querySelector('#notificationBtn .bg-red-500');
+            if (notificationBadge) {
+                const currentCount = parseInt(notificationBadge.textContent);
+                if (Math.random() > 0.8) { // 20% chance to update
+                    notificationBadge.textContent = currentCount + 1;
+                }
+            }
+        }, 30000); // Every 30 seconds
+
+        // Initialize tooltips for readiness heatmap
+        document.querySelectorAll('[title]').forEach(element => {
+            element.addEventListener('mouseenter', function() {
+                // In a real app, this would show custom tooltip
+                console.log('Tooltip:', this.getAttribute('title'));
+            });
+        });
+    </script>
+<script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+</body>
+</html>

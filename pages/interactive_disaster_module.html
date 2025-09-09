@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive Disaster Module - DisasterGuard Academy</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fdisastergu5854back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.8"></script>
+</head>
+<body class="bg-gradient-to-br from-blue-50 via-emerald-50 to-slate-50 min-h-screen">
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 opacity-5">
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <pattern id="disaster-pattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+                    <circle cx="50" cy="50" r="2" fill="#2563EB"/>
+                    <circle cx="25" cy="25" r="1" fill="#059669"/>
+                    <circle cx="75" cy="75" r="1.5" fill="#DC2626"/>
+                </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#disaster-pattern)"/>
+        </svg>
+    </div>
+
+    <!-- Header -->
+    <header class="relative z-10 bg-white/80 backdrop-blur-sm border-b border-slate-200">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo & Back Button -->
+                <div class="flex items-center space-x-4">
+                    <button onclick="window.location.href='student_dashboard.html'" class="p-2 hover:bg-slate-100 rounded-lg transition-colors duration-200">
+                        <i class="fas fa-arrow-left text-slate-600"></i>
+                    </button>
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
+                            <i class="fas fa-shield-alt text-white text-lg"></i>
+                        </div>
+                        <div>
+                            <h1 class="text-xl font-heading font-bold text-slate-800">DisasterGuard Academy</h1>
+                            <p class="text-xs text-slate-500">Interactive Learning Module</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Module Progress & Actions -->
+                <div class="flex items-center space-x-4">
+                    <!-- Progress Indicator -->
+                    <div class="hidden md:flex items-center space-x-2">
+                        <div class="w-32 bg-slate-200 rounded-full h-2">
+                            <div class="bg-gradient-to-r from-primary to-secondary h-2 rounded-full transition-all duration-500" style="width: 35%"></div>
+                        </div>
+                        <span class="text-sm text-slate-600">35%</span>
+                    </div>
+
+                    <!-- Emergency Button -->
+                    <button class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200">
+                        <i class="fas fa-exclamation-triangle mr-2"></i>Emergency
+                    </button>
+
+                    <!-- Language Selector -->
+                    <select class="bg-white border border-slate-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary-200 focus:border-primary">
+                        <option value="en">English</option>
+                        <option value="hi">हिंदी</option>
+                        <option value="bn">বাংলা</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="relative z-10 flex min-h-screen">
+        <!-- Sidebar Panel -->
+        <aside class="hidden lg:block w-80 bg-white/90 backdrop-blur-sm border-r border-slate-200 p-6 overflow-y-auto">
+            <!-- Module Info -->
+            <div class="mb-6">
+                <div class="flex items-center space-x-3 mb-4">
+                    <div class="w-12 h-12 bg-gradient-to-br from-red-500 to-orange-500 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-house-damage text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-lg font-heading font-bold text-slate-800">Earthquake Safety</h2>
+                        <p class="text-sm text-slate-500">Module 1 of 4</p>
+                    </div>
+                </div>
+                
+                <!-- Time & Progress -->
+                <div class="bg-blue-50 rounded-lg p-4 mb-4">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-sm font-medium text-blue-700">Time Remaining</span>
+                        <span class="text-sm font-bold text-blue-800">12 min</span>
+                    </div>
+                    <div class="w-full bg-blue-200 rounded-full h-2">
+                        <div class="bg-blue-500 h-2 rounded-full" style="width: 35%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Module Navigation -->
+            <div class="mb-6">
+                <h3 class="text-sm font-medium text-slate-700 mb-3">Module Sections</h3>
+                <div class="space-y-2">
+                    <div class="flex items-center space-x-3 p-3 bg-primary-50 border border-primary-200 rounded-lg">
+                        <div class="w-6 h-6 bg-primary rounded-full flex items-center justify-center">
+                            <i class="fas fa-check text-white text-xs"></i>
+                        </div>
+                        <span class="text-sm font-medium text-primary">Introduction</span>
+                    </div>
+                    <div class="flex items-center space-x-3 p-3 bg-primary-50 border border-primary-200 rounded-lg">
+                        <div class="w-6 h-6 bg-primary rounded-full flex items-center justify-center">
+                            <span class="text-white text-xs font-bold">2</span>
+                        </div>
+                        <span class="text-sm font-medium text-primary">Drop, Cover & Hold</span>
+                    </div>
+                    <div class="flex items-center space-x-3 p-3 bg-slate-100 rounded-lg">
+                        <div class="w-6 h-6 bg-slate-300 rounded-full flex items-center justify-center">
+                            <span class="text-slate-600 text-xs font-bold">3</span>
+                        </div>
+                        <span class="text-sm text-slate-600">After the Shaking</span>
+                    </div>
+                    <div class="flex items-center space-x-3 p-3 bg-slate-100 rounded-lg">
+                        <div class="w-6 h-6 bg-slate-300 rounded-full flex items-center justify-center">
+                            <span class="text-slate-600 text-xs font-bold">4</span>
+                        </div>
+                        <span class="text-sm text-slate-600">Emergency Kit</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Safety Checklist -->
+            <div class="mb-6">
+                <h3 class="text-sm font-medium text-slate-700 mb-3">Safety Checklist</h3>
+                <div class="space-y-2">
+                    <label class="flex items-center space-x-3 p-2 hover:bg-slate-50 rounded-lg cursor-pointer">
+                        <input type="checkbox" checked class="w-4 h-4 text-primary border-slate-300 rounded focus:ring-primary-200" />
+                        <span class="text-sm text-slate-700">Identify safe spots in room</span>
+                    </label>
+                    <label class="flex items-center space-x-3 p-2 hover:bg-slate-50 rounded-lg cursor-pointer">
+                        <input type="checkbox" checked class="w-4 h-4 text-primary border-slate-300 rounded focus:ring-primary-200" />
+                        <span class="text-sm text-slate-700">Practice drop position</span>
+                    </label>
+                    <label class="flex items-center space-x-3 p-2 hover:bg-slate-50 rounded-lg cursor-pointer">
+                        <input type="checkbox" class="w-4 h-4 text-primary border-slate-300 rounded focus:ring-primary-200" />
+                        <span class="text-sm text-slate-700">Learn evacuation routes</span>
+                    </label>
+                    <label class="flex items-center space-x-3 p-2 hover:bg-slate-50 rounded-lg cursor-pointer">
+                        <input type="checkbox" class="w-4 h-4 text-primary border-slate-300 rounded focus:ring-primary-200" />
+                        <span class="text-sm text-slate-700">Emergency contact list</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Points & Badges -->
+            <div class="mb-6">
+                <h3 class="text-sm font-medium text-slate-700 mb-3">Progress Rewards</h3>
+                <div class="bg-gradient-to-r from-emerald-50 to-blue-50 rounded-lg p-4">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-sm font-medium text-slate-700">Points Earned</span>
+                        <span class="text-lg font-bold text-emerald-600">350</span>
+                    </div>
+                    <div class="flex items-center space-x-2 mb-3">
+                        <div class="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center">
+                            <i class="fas fa-star text-white text-sm"></i>
+                        </div>
+                        <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+                            <i class="fas fa-shield-alt text-white text-sm"></i>
+                        </div>
+                        <div class="w-8 h-8 bg-slate-300 rounded-full flex items-center justify-center">
+                            <i class="fas fa-medal text-slate-500 text-sm"></i>
+                        </div>
+                    </div>
+                    <div class="text-xs text-slate-600">
+                        Next badge: <span class="font-medium text-primary">Earthquake Hero</span> (150 pts)
+                    </div>
+                </div>
+            </div>
+
+            <!-- Emergency Contacts -->
+            <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                <h3 class="text-sm font-medium text-red-700 mb-3 flex items-center">
+                    <i class="fas fa-phone-alt mr-2"></i>Emergency Contacts
+                </h3>
+                <div class="space-y-2 text-xs">
+                    <div class="flex justify-between">
+                        <span class="text-red-600">Fire Emergency</span>
+                        <span class="font-bold text-red-700">101</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-red-600">Police</span>
+                        <span class="font-bold text-red-700">100</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-red-600">Ambulance</span>
+                        <span class="font-bold text-red-700">108</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <div class="flex-1 p-6 lg:p-8">
+            <!-- Mobile Progress Bar -->
+            <div class="lg:hidden mb-6">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-sm font-medium text-slate-700">Module Progress</span>
+                    <span class="text-sm text-slate-600">35% Complete</span>
+                </div>
+                <div class="w-full bg-slate-200 rounded-full h-2">
+                    <div class="bg-gradient-to-r from-primary to-secondary h-2 rounded-full transition-all duration-500" style="width: 35%"></div>
+                </div>
+            </div>
+
+            <!-- Interactive Scenario Content -->
+            <div class="max-w-4xl mx-auto">
+                <!-- Scenario Header -->
+                <div class="text-center mb-8">
+                    <div class="inline-flex items-center space-x-2 bg-red-100 text-red-700 px-4 py-2 rounded-full text-sm font-medium mb-4">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <span>Earthquake Scenario</span>
+                    </div>
+                    <h1 class="text-3xl lg:text-4xl font-heading font-bold text-slate-800 mb-4">
+                        You're in Your Classroom When...
+                    </h1>
+                    <p class="text-lg text-slate-600 max-w-2xl mx-auto">
+                        The ground starts shaking! Learn the proper "Drop, Cover, and Hold On" technique to stay safe during an earthquake.
+                    </p>
+                </div>
+
+                <!-- Interactive Scenario Image -->
+                <div class="relative mb-8">
+                    <div class="bg-white rounded-2xl shadow-elevation-3 overflow-hidden">
+                        <div class="relative">
+                            <img src="https://images.pexels.com/photos/8926556/pexels-photo-8926556.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Classroom during earthquake" class="w-full h-64 lg:h-96 object-cover" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                            
+                            <!-- Interactive Hotspots -->
+                            <div class="absolute inset-0">
+                                <!-- Desk Hotspot -->
+                                <button class="hotspot absolute top-1/2 left-1/3 w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white font-bold animate-pulse hover:scale-110 transition-transform duration-200" data-tip="desk">
+                                    1
+                                </button>
+                                
+                                <!-- Window Hotspot -->
+                                <button class="hotspot absolute top-1/4 right-1/4 w-8 h-8 bg-red-500 rounded-full flex items-center justify-center text-white font-bold animate-pulse hover:scale-110 transition-transform duration-200" data-tip="window">
+                                    2
+                                </button>
+                                
+                                <!-- Door Hotspot -->
+                                <button class="hotspot absolute bottom-1/3 left-1/4 w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center text-white font-bold animate-pulse hover:scale-110 transition-transform duration-200" data-tip="door">
+                                    3
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hotspot Tooltips -->
+                    <div id="tooltip-desk" class="tooltip hidden absolute bg-white border border-slate-200 rounded-lg p-4 shadow-elevation-3 max-w-xs z-20">
+                        <div class="flex items-start space-x-3">
+                            <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-check text-white text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-slate-800 mb-1">Safe Spot: Under Desk</h4>
+                                <p class="text-sm text-slate-600">Drop down and take cover under a sturdy desk. This protects you from falling objects.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="tooltip-window" class="tooltip hidden absolute bg-white border border-slate-200 rounded-lg p-4 shadow-elevation-3 max-w-xs z-20">
+                        <div class="flex items-start space-x-3">
+                            <div class="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-times text-white text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-slate-800 mb-1">Danger: Near Windows</h4>
+                                <p class="text-sm text-slate-600">Stay away from windows! Glass can shatter and cause serious injuries during earthquakes.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="tooltip-door" class="tooltip hidden absolute bg-white border border-slate-200 rounded-lg p-4 shadow-elevation-3 max-w-xs z-20">
+                        <div class="flex items-start space-x-3">
+                            <div class="w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-info text-white text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-slate-800 mb-1">Exit Route</h4>
+                                <p class="text-sm text-slate-600">Remember the exit, but don't run during shaking. Wait until it stops, then evacuate calmly.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Decision Point -->
+                <div class="bg-white rounded-2xl shadow-elevation-3 p-6 lg:p-8 mb-8">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-br from-orange-400 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-question text-white text-2xl"></i>
+                        </div>
+                        <h2 class="text-2xl font-heading font-bold text-slate-800 mb-2">What Should You Do First?</h2>
+                        <p class="text-slate-600">The shaking has started. Choose the correct immediate response:</p>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <button class="decision-option p-6 border-2 border-slate-200 rounded-xl hover:border-primary hover:bg-primary-50 transition-all duration-200 text-left group" data-correct="false">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-slate-100 group-hover:bg-primary-100 rounded-lg flex items-center justify-center flex-shrink-0 transition-colors duration-200">
+                                    <i class="fas fa-running text-slate-600 group-hover:text-primary text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-medium text-slate-800 mb-2">Run to the Exit</h3>
+                                    <p class="text-sm text-slate-600">Immediately run towards the door to get outside quickly.</p>
+                                </div>
+                            </div>
+                        </button>
+
+                        <button class="decision-option p-6 border-2 border-slate-200 rounded-xl hover:border-primary hover:bg-primary-50 transition-all duration-200 text-left group" data-correct="true">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-slate-100 group-hover:bg-primary-100 rounded-lg flex items-center justify-center flex-shrink-0 transition-colors duration-200">
+                                    <i class="fas fa-shield-alt text-slate-600 group-hover:text-primary text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-medium text-slate-800 mb-2">Drop, Cover, and Hold On</h3>
+                                    <p class="text-sm text-slate-600">Drop to hands and knees, take cover under desk, and hold on.</p>
+                                </div>
+                            </div>
+                        </button>
+
+                        <button class="decision-option p-6 border-2 border-slate-200 rounded-xl hover:border-primary hover:bg-primary-50 transition-all duration-200 text-left group" data-correct="false">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-slate-100 group-hover:bg-primary-100 rounded-lg flex items-center justify-center flex-shrink-0 transition-colors duration-200">
+                                    <i class="fas fa-user-friends text-slate-600 group-hover:text-primary text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-medium text-slate-800 mb-2">Stand in Doorway</h3>
+                                    <p class="text-sm text-slate-600">Stand in the doorway frame for protection from falling debris.</p>
+                                </div>
+                            </div>
+                        </button>
+
+                        <button class="decision-option p-6 border-2 border-slate-200 rounded-xl hover:border-primary hover:bg-primary-50 transition-all duration-200 text-left group" data-correct="false">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-slate-100 group-hover:bg-primary-100 rounded-lg flex items-center justify-center flex-shrink-0 transition-colors duration-200">
+                                    <i class="fas fa-phone text-slate-600 group-hover:text-primary text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-medium text-slate-800 mb-2">Call for Help</h3>
+                                    <p class="text-sm text-slate-600">Immediately call emergency services or parents for assistance.</p>
+                                </div>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Drag and Drop Exercise -->
+                <div class="bg-white rounded-2xl shadow-elevation-3 p-6 lg:p-8 mb-8">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-br from-emerald-400 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-box text-white text-2xl"></i>
+                        </div>
+                        <h2 class="text-2xl font-heading font-bold text-slate-800 mb-2">Build Your Emergency Kit</h2>
+                        <p class="text-slate-600">Drag the essential items into your emergency kit:</p>
+                    </div>
+
+                    <div class="grid lg:grid-cols-2 gap-8">
+                        <!-- Available Items -->
+                        <div>
+                            <h3 class="font-medium text-slate-700 mb-4">Available Items</h3>
+                            <div class="grid grid-cols-2 gap-3" id="available-items">
+                                <div class="draggable-item p-3 bg-slate-100 rounded-lg border-2 border-transparent hover:border-primary cursor-move transition-all duration-200" data-essential="true">
+                                    <div class="flex items-center space-x-2">
+                                        <i class="fas fa-tint text-blue-500"></i>
+                                        <span class="text-sm font-medium">Water Bottles</span>
+                                    </div>
+                                </div>
+                                <div class="draggable-item p-3 bg-slate-100 rounded-lg border-2 border-transparent hover:border-primary cursor-move transition-all duration-200" data-essential="false">
+                                    <div class="flex items-center space-x-2">
+                                        <i class="fas fa-gamepad text-purple-500"></i>
+                                        <span class="text-sm font-medium">Video Games</span>
+                                    </div>
+                                </div>
+                                <div class="draggable-item p-3 bg-slate-100 rounded-lg border-2 border-transparent hover:border-primary cursor-move transition-all duration-200" data-essential="true">
+                                    <div class="flex items-center space-x-2">
+                                        <i class="fas fa-flashlight text-yellow-500"></i>
+                                        <span class="text-sm font-medium">Flashlight</span>
+                                    </div>
+                                </div>
+                                <div class="draggable-item p-3 bg-slate-100 rounded-lg border-2 border-transparent hover:border-primary cursor-move transition-all duration-200" data-essential="true">
+                                    <div class="flex items-center space-x-2">
+                                        <i class="fas fa-band-aid text-red-500"></i>
+                                        <span class="text-sm font-medium">First Aid Kit</span>
+                                    </div>
+                                </div>
+                                <div class="draggable-item p-3 bg-slate-100 rounded-lg border-2 border-transparent hover:border-primary cursor-move transition-all duration-200" data-essential="false">
+                                    <div class="flex items-center space-x-2">
+                                        <i class="fas fa-ice-cream text-pink-500"></i>
+                                        <span class="text-sm font-medium">Ice Cream</span>
+                                    </div>
+                                </div>
+                                <div class="draggable-item p-3 bg-slate-100 rounded-lg border-2 border-transparent hover:border-primary cursor-move transition-all duration-200" data-essential="true">
+                                    <div class="flex items-center space-x-2">
+                                        <i class="fas fa-broadcast-tower text-green-500"></i>
+                                        <span class="text-sm font-medium">Radio</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Emergency Kit Drop Zone -->
+                        <div>
+                            <h3 class="font-medium text-slate-700 mb-4">Your Emergency Kit</h3>
+                            <div id="emergency-kit" class="min-h-64 p-6 border-2 border-dashed border-slate-300 rounded-lg bg-slate-50 transition-all duration-200">
+                                <div class="text-center text-slate-500">
+                                    <i class="fas fa-box-open text-4xl mb-4"></i>
+                                    <p>Drag essential items here</p>
+                                </div>
+                            </div>
+                            <button id="check-kit" class="w-full mt-4 bg-primary text-white py-3 rounded-lg font-medium hover:bg-primary-700 transition-colors duration-200">
+                                Check My Kit
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div class="flex items-center justify-between">
+                    <button class="flex items-center space-x-2 px-6 py-3 border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors duration-200">
+                        <i class="fas fa-arrow-left"></i>
+                        <span>Previous</span>
+                    </button>
+
+                    <div class="flex items-center space-x-4">
+                        <button onclick="window.location.href='quiz_interface.html'" class="bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200">
+                            <i class="fas fa-quiz mr-2"></i>Take Quiz
+                        </button>
+                        <button class="bg-primary hover:bg-primary-700 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200">
+                            <span>Continue</span>
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Mobile Sidebar Toggle -->
+    <button id="mobile-sidebar-toggle" class="lg:hidden fixed bottom-6 left-6 bg-primary text-white p-4 rounded-full shadow-lg z-30">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Mobile Sidebar Overlay -->
+    <div id="mobile-sidebar-overlay" class="lg:hidden fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
+
+    <!-- Mobile Sidebar -->
+    <div id="mobile-sidebar" class="lg:hidden fixed left-0 top-0 h-full w-80 bg-white z-50 transform -translate-x-full transition-transform duration-300 overflow-y-auto">
+        <div class="p-6">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-lg font-heading font-bold text-slate-800">Module Progress</h2>
+                <button id="close-mobile-sidebar" class="p-2 hover:bg-slate-100 rounded-lg">
+                    <i class="fas fa-times text-slate-600"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile sidebar content (same as desktop sidebar) -->
+            <div class="space-y-6">
+                <!-- Module Info -->
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-red-500 to-orange-500 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-house-damage text-white text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-heading font-bold text-slate-800">Earthquake Safety</h3>
+                            <p class="text-sm text-slate-500">Module 1 of 4</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-blue-50 rounded-lg p-4">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-sm font-medium text-blue-700">Time Remaining</span>
+                            <span class="text-sm font-bold text-blue-800">12 min</span>
+                        </div>
+                        <div class="w-full bg-blue-200 rounded-full h-2">
+                            <div class="bg-blue-500 h-2 rounded-full" style="width: 35%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Points & Badges -->
+                <div class="bg-gradient-to-r from-emerald-50 to-blue-50 rounded-lg p-4">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-sm font-medium text-slate-700">Points Earned</span>
+                        <span class="text-lg font-bold text-emerald-600">350</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center">
+                            <i class="fas fa-star text-white text-sm"></i>
+                        </div>
+                        <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+                            <i class="fas fa-shield-alt text-white text-sm"></i>
+                        </div>
+                        <div class="w-8 h-8 bg-slate-300 rounded-full flex items-center justify-center">
+                            <i class="fas fa-medal text-slate-500 text-sm"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Hotspot interactions
+        document.querySelectorAll('.hotspot').forEach(hotspot => {
+            hotspot.addEventListener('click', function() {
+                const tipId = 'tooltip-' + this.dataset.tip;
+                const tooltip = document.getElementById(tipId);
+                
+                // Hide all tooltips
+                document.querySelectorAll('.tooltip').forEach(t => t.classList.add('hidden'));
+                
+                // Show clicked tooltip
+                tooltip.classList.remove('hidden');
+                
+                // Position tooltip near hotspot
+                const rect = this.getBoundingClientRect();
+                tooltip.style.left = (rect.left + window.scrollX - 150) + 'px';
+                tooltip.style.top = (rect.top + window.scrollY - 100) + 'px';
+                
+                // Add points for interaction
+                addPoints(10);
+                
+                // Hide tooltip after 5 seconds
+                setTimeout(() => {
+                    tooltip.classList.add('hidden');
+                }, 5000);
+            });
+        });
+
+        // Decision point interactions
+        document.querySelectorAll('.decision-option').forEach(option => {
+            option.addEventListener('click', function() {
+                const isCorrect = this.dataset.correct === 'true';
+                
+                // Remove previous selections
+                document.querySelectorAll('.decision-option').forEach(opt => {
+                    opt.classList.remove('border-emerald-500', 'bg-emerald-50', 'border-red-500', 'bg-red-50');
+                });
+                
+                if (isCorrect) {
+                    this.classList.add('border-emerald-500', 'bg-emerald-50');
+                    showFeedback('Correct! Drop, Cover, and Hold On is the safest immediate response during an earthquake.', 'success');
+                    addPoints(50);
+                } else {
+                    this.classList.add('border-red-500', 'bg-red-50');
+                    showFeedback('Not quite right. The safest response is to Drop, Cover, and Hold On immediately.', 'error');
+                }
+            });
+        });
+
+        // Drag and drop functionality
+        let draggedItem = null;
+
+        document.querySelectorAll('.draggable-item').forEach(item => {
+            item.addEventListener('dragstart', function(e) {
+                draggedItem = this;
+                this.style.opacity = '0.5';
+            });
+
+            item.addEventListener('dragend', function() {
+                this.style.opacity = '1';
+                draggedItem = null;
+            });
+
+            // Touch events for mobile
+            item.addEventListener('touchstart', function(e) {
+                this.classList.add('dragging');
+            });
+        });
+
+        const emergencyKit = document.getElementById('emergency-kit');
+
+        emergencyKit.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            this.classList.add('border-primary', 'bg-primary-50');
+        });
+
+        emergencyKit.addEventListener('dragleave', function() {
+            this.classList.remove('border-primary', 'bg-primary-50');
+        });
+
+        emergencyKit.addEventListener('drop', function(e) {
+            e.preventDefault();
+            this.classList.remove('border-primary', 'bg-primary-50');
+            
+            if (draggedItem) {
+                // Remove placeholder text if first item
+                const placeholder = this.querySelector('.text-center');
+                if (placeholder) {
+                    placeholder.remove();
+                }
+                
+                // Add item to kit
+                const clonedItem = draggedItem.cloneNode(true);
+                clonedItem.classList.remove('draggable-item');
+                clonedItem.classList.add('kit-item', 'mb-2');
+                this.appendChild(clonedItem);
+                
+                // Remove from available items
+                draggedItem.remove();
+                
+                addPoints(20);
+            }
+        });
+
+        // Check emergency kit
+        document.getElementById('check-kit').addEventListener('click', function() {
+            const kitItems = document.querySelectorAll('.kit-item');
+            let essentialCount = 0;
+            let totalCount = kitItems.length;
+            
+            kitItems.forEach(item => {
+                if (item.dataset.essential === 'true') {
+                    essentialCount++;
+                }
+            });
+            
+            if (essentialCount >= 3 && totalCount <= 5) {
+                showFeedback(`Great job! You've selected ${essentialCount} essential items for your emergency kit.`, 'success');
+                addPoints(100);
+            } else if (essentialCount < 3) {
+                showFeedback(`You need more essential items. Try to include at least 3 essential items.`, 'warning');
+            } else {
+                showFeedback(`Good selection, but try to focus on the most essential items only.`, 'warning');
+            }
+        });
+
+        // Mobile sidebar functionality
+        const mobileToggle = document.getElementById('mobile-sidebar-toggle');
+        const mobileSidebar = document.getElementById('mobile-sidebar');
+        const mobileOverlay = document.getElementById('mobile-sidebar-overlay');
+        const closeMobileSidebar = document.getElementById('close-mobile-sidebar');
+
+        mobileToggle.addEventListener('click', function() {
+            mobileSidebar.classList.remove('-translate-x-full');
+            mobileOverlay.classList.remove('hidden');
+        });
+
+        closeMobileSidebar.addEventListener('click', closeSidebar);
+        mobileOverlay.addEventListener('click', closeSidebar);
+
+        function closeSidebar() {
+            mobileSidebar.classList.add('-translate-x-full');
+            mobileOverlay.classList.add('hidden');
+        }
+
+        // Utility functions
+        function addPoints(points) {
+            const currentPoints = parseInt(document.querySelector('.text-emerald-600').textContent);
+            const newPoints = currentPoints + points;
+            document.querySelector('.text-emerald-600').textContent = newPoints;
+            
+            // Show points animation
+            showPointsAnimation(points);
+        }
+
+        function showPointsAnimation(points) {
+            const animation = document.createElement('div');
+            animation.className = 'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-emerald-500 text-white px-4 py-2 rounded-lg font-bold text-lg z-50 animate-bounce-gentle';
+            animation.textContent = `+${points} points!`;
+            document.body.appendChild(animation);
+            
+            setTimeout(() => {
+                animation.remove();
+            }, 2000);
+        }
+
+        function showFeedback(message, type) {
+            const feedback = document.createElement('div');
+            feedback.className = `fixed top-6 right-6 max-w-sm p-4 rounded-lg shadow-lg z-50 animate-slide-up ${
+                type === 'success' ? 'bg-emerald-50 border border-emerald-200 text-emerald-800' :
+                type === 'error' ? 'bg-red-50 border border-red-200 text-red-800' :
+                'bg-amber-50 border border-amber-200 text-amber-800'
+            }`;
+            
+            feedback.innerHTML = `
+                <div class="flex items-start space-x-3">
+                    <i class="fas ${
+                        type === 'success' ? 'fa-check-circle text-emerald-500' :
+                        type === 'error' ? 'fa-times-circle text-red-500' :
+                        'fa-exclamation-triangle text-amber-500'
+                    } mt-0.5"></i>
+                    <div>
+                        <p class="text-sm font-medium">${message}</p>
+                    </div>
+                    <button onclick="this.parentElement.parentElement.remove()" class="text-slate-400 hover:text-slate-600">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            `;
+            
+            document.body.appendChild(feedback);
+            
+            setTimeout(() => {
+                if (feedback.parentElement) {
+                    feedback.remove();
+                }
+            }, 5000);
+        }
+
+        // Hide tooltips when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.hotspot') && !e.target.closest('.tooltip')) {
+                document.querySelectorAll('.tooltip').forEach(t => t.classList.add('hidden'));
+            }
+        });
+
+        // Auto-save progress
+        setInterval(() => {
+            // In a real application, this would save progress to backend
+            console.log('Progress auto-saved');
+        }, 30000);
+    </script>
+<script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+</body>
+</html>
